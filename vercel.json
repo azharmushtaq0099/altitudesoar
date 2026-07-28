@@ -5,9 +5,17 @@
     { "src": "^/_next/(.*)$", "dest": "/_next/$1" },
     { "src": "^/images/(.*)$", "dest": "/images/$1" },
     { "src": "^/img/(.*)$", "dest": "/img/$1" },
+    { "src": "^/loader/(.*)$", "dest": "/loader/$1" },
     { "src": "^/zelrova-preloader\\.js$", "dest": "/zelrova-preloader.js" },
     { "src": "^/premium\\.css$", "dest": "/premium.css" },
     { "src": "^/favicon.*$", "dest": "/$0" },
+    { "src": "^/oplossingen$", "dest": "/oplossingen" },
+    { "src": "^/model$", "dest": "/model" },
+    { "src": "^/inzichten$", "dest": "/inzichten" },
+    { "src": "^/over$", "dest": "/over" },
+    { "src": "^/contact$", "dest": "/contact" },
+    { "src": "^/boek-een-vlucht$", "dest": "/boek-een-vlucht" },
+    { "src": "^/$", "dest": "/index.html" },
     { "src": "^/(.*)$", "dest": "/index.html" }
   ]
 }

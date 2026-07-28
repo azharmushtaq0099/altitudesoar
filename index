@@ -7,6 +7,6 @@
 :HL["/_next/static/media/Unica77LLWeb_Regular-s.p.d6091cf5.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/chunks/6fa0331da5274396.css?dpl=dpl_CaUNnkcdmUiDdKXKHk1JF1JDoNkf","style"]
 :HL["/_next/static/chunks/794add4b4992d240.css?dpl=dpl_CaUNnkcdmUiDdKXKHk1JF1JDoNkf","style"]
-:HL["https://altitudesoar-bucket.ams3.digitaloceanspaces.com/51612f527fbd1c2172e2420e9f205993.webp","image",{"media":"(max-width: 960px)"}]
-:HL["https://altitudesoar-bucket.ams3.digitaloceanspaces.com/50b2c2e84ad9db96490e3ae62b543597.webp","image",{"media":"(min-width: 961px)"}]
+:HL["https://aerodynamics-bucket.ams3.digitaloceanspaces.com/51612f527fbd1c2172e2420e9f205993.webp","image",{"media":"(max-width: 960px)"}]
+:HL["https://aerodynamics-bucket.ams3.digitaloceanspaces.com/50b2c2e84ad9db96490e3ae62b543597.webp","image",{"media":"(min-width: 961px)"}]
 0:{"buildId":"6Vi0BGEWScf94jssYxg6N","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"lang","paramType":"d","paramKey":"nl","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
