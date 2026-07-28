@@ -1,0 +1,13 @@
+{
+  "buildCommand": "",
+  "outputDirectory": ".",
+  "routes": [
+    { "src": "^/_next/(.*)$", "dest": "/_next/$1" },
+    { "src": "^/images/(.*)$", "dest": "/images/$1" },
+    { "src": "^/img/(.*)$", "dest": "/img/$1" },
+    { "src": "^/zelrova-preloader\\.js$", "dest": "/zelrova-preloader.js" },
+    { "src": "^/premium\\.css$", "dest": "/premium.css" },
+    { "src": "^/favicon.*$", "dest": "/$0" },
+    { "src": "^/(.*)$", "dest": "/index.html" }
+  ]
+}

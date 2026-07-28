@@ -1,0 +1,181 @@
+/* Stratos — Premium theme refinements */
+
+/* ── LOGO OVERRIDE ───────────────────────────────────────── */
+
+/* Hide the original SVG mark */
+a.logo svg {
+  display: none !important;
+}
+
+/* Inject STRATOS wordmark as CSS content */
+a.logo::before {
+  content: "STRATOS";
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: currentColor;
+  display: block;
+  white-space: nowrap;
+}
+
+:root {
+  --color-nachtgroen: #03193d !important;
+  --color-nachtgroen-dark: #050e1f !important;
+  --color-wolkenparel: #f7fafd !important;
+  --color-hemelsblauw: #006fd6 !important;
+  --color-helderblauw: #d4e5f5 !important;
+  --color-middernachtgroen: #07162e !important;
+}
+
+/* ── GLOBAL BACKGROUND ───────────────────────────────────── */
+
+body {
+  background-color: #f7fafd !important;
+}
+
+/* ── NAV ─────────────────────────────────────────────────── */
+
+/* Always show a very faint pill outline */
+.navigation-background {
+  border-radius: 999px !important;
+  border: 1px solid rgba(3, 25, 61, 0.08) !important;
+  transition: background-color 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, opacity 0.35s ease !important;
+}
+
+/* Frosted glass when scrolling */
+[data-scrolling-started=true] .navigation-background {
+  background-color: rgba(247, 250, 253, 0.85) !important;
+  backdrop-filter: blur(24px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(200%) !important;
+  box-shadow: 0 2px 32px rgba(3, 25, 61, 0.12), 0 1px 0 rgba(3, 25, 61, 0.06) !important;
+  border-color: rgba(3, 25, 61, 0.10) !important;
+}
+
+/* Nav links */
+.nav-link {
+  letter-spacing: -0.025em !important;
+  font-size: 13.5px !important;
+}
+
+/* ── BUTTONS ─────────────────────────────────────────────── */
+
+/* All filled buttons — depth shadow */
+.button-fill:not(.ghost) {
+  box-shadow: 0 2px 0 rgba(0,0,0,0.18), 0 4px 16px rgba(3, 25, 61, 0.20) !important;
+  transition: box-shadow 0.3s ease, transform 0.3s ease !important;
+}
+
+.btn:hover .button-fill:not(.ghost),
+.button:hover .button-fill:not(.ghost) {
+  box-shadow: 0 1px 0 rgba(0,0,0,0.18), 0 8px 28px rgba(3, 25, 61, 0.28) !important;
+}
+
+/* Outline / ghost buttons */
+.button-fill.ghost {
+  border: 1.5px solid rgba(3, 25, 61, 0.25) !important;
+  outline: none !important;
+}
+
+.btn:hover .button-fill.ghost,
+.button:hover .button-fill.ghost {
+  border-color: rgba(3, 25, 61, 0.5) !important;
+  background-color: rgba(3, 25, 61, 0.04) !important;
+}
+
+/* All button text — tighter tracking */
+.btn, .button {
+  letter-spacing: -0.025em !important;
+}
+
+/* ── TYPOGRAPHY ──────────────────────────────────────────── */
+
+/* Serif display headings — editorial tight tracking */
+h1, h2, h3 {
+  letter-spacing: -0.035em !important;
+}
+
+p, li, span {
+  letter-spacing: -0.012em !important;
+}
+
+/* ── CARDS ───────────────────────────────────────────────── */
+
+/* Service / feature cards */
+[class*="rounded-"]:has(> img),
+[class*="rounded-"]:has(> picture),
+[class*="rounded-"]:has(> div > img),
+[class*="rounded-"]:has(> div > picture) {
+  transition: box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1), transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+[class*="rounded-"]:has(> img):hover,
+[class*="rounded-"]:has(> picture):hover,
+[class*="rounded-"]:has(> div > img):hover,
+[class*="rounded-"]:has(> div > picture):hover {
+  box-shadow: 0 12px 48px rgba(3, 25, 61, 0.14) !important;
+  transform: translateY(-3px) !important;
+}
+
+/* ── FORMS ───────────────────────────────────────────────── */
+
+.form-control {
+  border: 1.5px solid rgba(3, 25, 61, 0.12) !important;
+  border-radius: 8px !important;
+  background-color: rgba(247, 250, 253, 0.98) !important;
+  transition: border-color 0.2s, box-shadow 0.2s !important;
+}
+
+.form-control:focus {
+  border-color: rgba(0, 111, 214, 0.55) !important;
+  box-shadow: 0 0 0 3px rgba(0, 111, 214, 0.12) !important;
+  outline: none !important;
+  background-color: #fff !important;
+}
+
+.form-control::placeholder {
+  color: rgba(3, 25, 61, 0.32) !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* ── BOOKING BAR SECTION ─────────────────────────────────── */
+
+/* The white booking/search pill at bottom of hero */
+[class*="booking"],
+[class*="search-bar"],
+[class*="vlucht-form"] {
+  box-shadow: 0 8px 40px rgba(3, 25, 61, 0.12), 0 1px 0 rgba(3, 25, 61, 0.06) !important;
+}
+
+/* ── SECTION BACKGROUNDS ─────────────────────────────────── */
+
+/* Light sections — very subtle top shadow for depth */
+section[class*="bg-wolkenparel"],
+section[class*="bg-helderblauw"],
+div[class*="bg-wolkenparel"],
+div[class*="bg-helderblauw"] {
+  background: linear-gradient(180deg, rgba(212, 229, 245, 0.18) 0%, transparent 48px) !important;
+}
+
+/* ── HAMBURGER ───────────────────────────────────────────── */
+
+.mobile-hamburger {
+  background-color: rgba(3, 25, 61, 0.07) !important;
+  backdrop-filter: blur(8px) !important;
+  box-shadow: 0 2px 12px rgba(3, 25, 61, 0.12) !important;
+  border: 1px solid rgba(3, 25, 61, 0.08) !important;
+}
+
+/* ── SCROLLBAR ───────────────────────────────────────────── */
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(3, 25, 61, 0.2); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(3, 25, 61, 0.38); }
+
+/* ── TEXT SELECTION ──────────────────────────────────────── */
+
+::selection {
+  background: rgba(0, 111, 214, 0.16);
+  color: #03193d;
+}

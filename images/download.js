@@ -1,0 +1,69 @@
+const https = require('https');
+const fs = require('fs');
+
+const replacements = {
+  '3f947a37da9e005607592a24414a8a80.webp': 'https://images.pexels.com/photos/638093/pexels-photo-638093.jpeg?auto=compress&cs=tinysrgb&w=2880',
+  '60ab19cf6ae1d7a6ff0800f37a3b2aaa.webp': 'https://images.pexels.com/photos/30773896/pexels-photo-30773896.jpeg?auto=compress&cs=tinysrgb&w=2160',
+  '50b2c2e84ad9db96490e3ae62b543597.webp': 'https://images.pexels.com/photos/31068955/pexels-photo-31068955.jpeg?auto=compress&cs=tinysrgb&w=2160',
+  '7428683f318e8085a9a6851a5f5d79b4.webp': 'https://images.pexels.com/photos/37748845/pexels-photo-37748845.jpeg?auto=compress&cs=tinysrgb&w=2600',
+  'e50af9f41328ee8805315a1becca693d.webp': 'https://images.pexels.com/photos/32856528/pexels-photo-32856528.jpeg?auto=compress&cs=tinysrgb&w=2160',
+  '4d37ba40a0ca7a3c06404719e5942020.webp': 'https://images.pexels.com/photos/36093856/pexels-photo-36093856.jpeg?auto=compress&cs=tinysrgb&w=1440',
+  '574fd9853ee70bb1bdc0abad2be137ff.webp': 'https://images.pexels.com/photos/5778456/pexels-photo-5778456.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'ac74f023483c7df57b652b3eecc8ac6e.webp': 'https://images.pexels.com/photos/8937451/pexels-photo-8937451.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  '9babfe1b3557d3a8bfb26143c46322a0.webp': 'https://images.pexels.com/photos/30462809/pexels-photo-30462809.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  '4f67930eed2628000669537bc6501b6d.webp': 'https://images.pexels.com/photos/14914173/pexels-photo-14914173.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  '0e7bb3d1e04a6d907691811c08b1fcd9.webp': 'https://images.pexels.com/photos/32161124/pexels-photo-32161124.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  '8fa31e5fc59fd435433f9984fe877548.jpg':  'https://images.pexels.com/photos/5778520/pexels-photo-5778520.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  'd87d603e9d29a9d19ce8023894d7fd0b.png':  'https://images.pexels.com/photos/37864103/pexels-photo-37864103.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  'f6935dff74855cc9ed1dd63428e7b871.jpg':  'https://images.pexels.com/photos/37864074/pexels-photo-37864074.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  '83ebce4fc6f837a94348ba0e0d241fbf.png':  'https://images.pexels.com/photos/30773896/pexels-photo-30773896.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  '81c9da820bf0b87921633ea9e4b0f6b6.jpg':  'https://images.pexels.com/photos/638093/pexels-photo-638093.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'fdd0ebf0f1dfe53a8003af37fe74d012.png':  'https://images.pexels.com/photos/37748845/pexels-photo-37748845.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'cd1631324477db8adb6294a0b2548ecc.jpg':  'https://images.pexels.com/photos/15768079/pexels-photo-15768079.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  '7761b07eaafea91750d7b1172b2a349a.webp': 'https://images.pexels.com/photos/5778472/pexels-photo-5778472.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  'bb1db8f7f6179c53431ea229ea1f0ae5.jpg':  'https://images.pexels.com/photos/31068955/pexels-photo-31068955.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  '5a0f251667219400a012ed775de58592.webp': 'https://images.pexels.com/photos/32856528/pexels-photo-32856528.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  '1f22087ec969aba0292a1d71e8c1d9a0.webp': 'https://images.pexels.com/photos/11006917/pexels-photo-11006917.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  '6f74f6abbc3940ff51bba342e23fdd37.jpg':  'https://images.pexels.com/photos/5778455/pexels-photo-5778455.jpeg?auto=compress&cs=tinysrgb&w=1080',
+  'fd53ee810f04ae4a11f90259067ce85e.jpg':  'https://images.pexels.com/photos/20562278/pexels-photo-20562278.jpeg?auto=compress&cs=tinysrgb&w=1080',
+  'bde1dc3b89d0506946bce5329ab93ff1.jpg':  'https://images.pexels.com/photos/14914172/pexels-photo-14914172.jpeg?auto=compress&cs=tinysrgb&w=1080',
+  '40aa7ec9508a37c50a9463bfa5f67b10.jpg':  'https://images.pexels.com/photos/20562279/pexels-photo-20562279.jpeg?auto=compress&cs=tinysrgb&w=1080',
+  '1653c528d6aca612bb0f746e9df1ae8e.webp': 'https://images.pexels.com/photos/14400667/pexels-photo-14400667.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  '258c9bd909cf03ea29b235c84618147a.webp': 'https://images.pexels.com/photos/3834331/pexels-photo-3834331.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  '51612f527fbd1c2172e2420e9f205993.webp': 'https://images.pexels.com/photos/32642491/pexels-photo-32642491.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  '5c8561d9da72d269210b47111e52beec.webp': 'https://images.pexels.com/photos/5778455/pexels-photo-5778455.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  '5d5e705e3e828450ca5aa2810285d98b.webp': 'https://images.pexels.com/photos/14914173/pexels-photo-14914173.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  '638ab7c36ef7b663b0e3a4d74528959a.jpg':  'https://images.pexels.com/photos/37864074/pexels-photo-37864074.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  '847fd02ee7af3293cb846b21013961c9.webp': 'https://images.pexels.com/photos/30462809/pexels-photo-30462809.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  'ae64efa590bc457b4a89a68be6e9e399.webp': 'https://images.pexels.com/photos/5778456/pexels-photo-5778456.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  'c7d6000854931cf7cd875c06ebbcaa67.webp': 'https://images.pexels.com/photos/11006917/pexels-photo-11006917.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  'd42a5e1ced64aa7ea8944ba529826f8a.webp': 'https://images.pexels.com/photos/8937451/pexels-photo-8937451.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  'e81ca05f3407ffb04d965871a012762d.webp': 'https://images.pexels.com/photos/30773896/pexels-photo-30773896.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  'fa426c810c249796afffde4ecb79d4e0.webp': 'https://images.pexels.com/photos/37748845/pexels-photo-37748845.jpeg?auto=compress&cs=tinysrgb&w=1600',
+};
+
+fs.writeFileSync('mapping.json', JSON.stringify(replacements, null, 2));
+
+function download(hash, url) {
+  return new Promise((resolve) => {
+    const outFile = 'replacement_' + hash.replace(/\.(webp|jpg|png)$/, '.jpg');
+    if (fs.existsSync(outFile)) { console.log('skip', outFile); resolve(outFile); return; }
+    https.get(url, { headers: { 'User-Agent': 'Mozilla/5.0' } }, (res) => {
+      if (res.statusCode === 301 || res.statusCode === 302) {
+        https.get(res.headers.location, { headers: { 'User-Agent': 'Mozilla/5.0' } }, (res2) => {
+          const out = fs.createWriteStream(outFile);
+          res2.pipe(out);
+          out.on('finish', () => { console.log('ok', outFile); resolve(outFile); });
+        });
+        return;
+      }
+      if (res.statusCode !== 200) { console.log('FAIL', hash, res.statusCode); resolve(null); return; }
+      const out = fs.createWriteStream(outFile);
+      res.pipe(out);
+      out.on('finish', () => { console.log('ok', outFile); resolve(outFile); });
+    }).on('error', e => { console.log('ERR', hash, e.message); resolve(null); });
+  });
+}
+
+Promise.all(Object.entries(replacements).map(([hash, url]) => download(hash, url)))
+  .then(results => console.log('\nDone:', results.filter(Boolean).length, '/', Object.keys(replacements).length));
